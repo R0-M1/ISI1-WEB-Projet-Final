@@ -1,4 +1,7 @@
 <?php
-require_once '../config/database.php'; // Connexion à la base de données
+// Charger l'autoloader de Composer
+require_once '../vendor/autoload.php';
 
+// Charger le fichier de configuration des routes
+require_once '../config/routes.php';
 ?>

@@ -23,6 +23,10 @@
             <span>Déconnexion</span>
         </a>
 
+        <a href="#" class="bottom">
+            <span>Déconnexion</span>
+        </a>
+
 
 
     </nav>
