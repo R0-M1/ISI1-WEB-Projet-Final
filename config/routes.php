@@ -1,22 +1,22 @@
 <?php
-use App\Controller\UserController;
+use App\Controller\testController;
 
 // Récupérer les paramètres de l'URL
+$page = $_GET['page'] ?? null // Page active
 $action = $_GET['action'] ?? null; // Action de la route
-$id = $_GET['id'] ?? null;         // ID dans les routes (ex: pour 'edit', 'delete')
 
 // Initialisation du contrôleur
 $controller = null;
 $method = null;
 
-switch ($action) {
+switch ($page) { // TODO faire un double switch, un switch($action) imbriqué dans un switch($page)
     case 'accueil':
-        $controller = 'UserController';
-        $method = 'createUser';
+        $controller = 'SiteController';
+        $method = 'accueil';
         break;
     default:
-        $controller = 'UserController';
-        $method = 'listUsers';  // Par défaut afficher la liste
+        $controller = 'AccueilController';
+        $method = 'index';
         break;
 }
 
