@@ -10,14 +10,14 @@ voici mon organisation de projet de site web MVC avec twig :
 --index.php
 -src
 --Controller
+---AccueilController.php
 --Model
 ---Entreprise.php
 --View
----Accueil.php
----Aide.php
----Entreprise.php
--templates
---nav.twig
+---accueil.twig
+---includes
+----base.twig
+----nav.twig
 -vendor
 
 Comment ferai tu pour rediriger vers les differentes view

@@ -1,20 +1,28 @@
 <nav>
-    <a href="#" id="onglet_accueil" class="actif">
+    <a href="?page=accueil" id="onglet_accueil" class="{{ page == 'accueil' ? 'actif' : '' }}">
         <span>Accueil</span>
     </a>
-    <a href="#" id="onglet_entreprise">
+    <a href="?page=entreprise" id="onglet_entreprise" class="{{ page == 'entreprise' ? 'actif' : '' }}">
         <span>Entreprise</span>
     </a>
-    <a href="#" id="onglet_stagiaire">
+    <a href="?page=stagiaire" id="onglet_stagiaire" class="{{ page == 'stagiaire' ? 'actif' : '' }}">
         <span>Stagiaire</span>
     </a>
-    <a href="#" id="onglet_inscrire">
+    <a href="?page=inscription" id="onglet_inscrire" class="{{ page == 'inscription' ? 'actif' : '' }}">
         <span>Inscription</span>
     </a>
-    <a href="#" id="onglet_aide">
+    <a href="?page=aide" id="onglet_aide" class="{{ page == 'aide' ? 'actif' : '' }}">
         <span>Aide</span>
     </a>
-    <a href="#" id="onglet_deconnexion">
+    <a href="?page=deconnexion" id="onglet_deconnexion">
         <span>Déconnexion</span>
     </a>
+    <div class="bottom">
+        <a href="#" onclick="agrandir()" id="icon_droite" class="actif">
+            <span>Développer</span>
+        </a>
+        <a href="#" onclick="reduire()" id="icon_gauche">
+            <span>Réduire</span>
+        </a>
+    </div>
 </nav>
