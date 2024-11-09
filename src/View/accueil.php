@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="public/css/general.css"></link>
+    <link rel="stylesheet" href="../../public/css/general.css"></link>
 </head>
 <body>
     <nav>

@@ -13,9 +13,9 @@ class SiteController
         // $entreprises = Entreprise::findAll();
 
         // Inclure Twig et afficher la vue correspondante
-        echo $this->render('../../templates/accueil.twig', [
-            'entreprises' => $entreprises // Si tu veux passer des données
-        ]);
+        $loader = new \Twig\Loader\FilesystemLoader('../templates');
+        $twig = new \Twig\Environment($loader);
+        echo $twig->render('accueil.twig', []);
     }
 
     public function aide()

@@ -1,11 +1,6 @@
-<!-- templates/nav.twig -->
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site</title>
-    <link rel="stylesheet" href="public/css/general.css">
+    <link rel="stylesheet" href="/public/css/general.css">
 </head>
 <body>
 <nav>
@@ -24,14 +19,12 @@
     <a href="#" id="onglet_aide">
         <span>Aide</span>
     </a>
-    <a href="#" id="onglet_deconnection">
+    <a href="#" id="onglet_deconnexion">
         <span>Déconnexion</span>
     </a>
 </nav>
-
-{% block content %}
-{% endblock %}
-
-<script src="/public/js/script.js"></script>
+<div class="">
+    {% block contenu %}{% endblock %}
+</div>
 </body>
 </html>
