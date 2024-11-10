@@ -1,0 +1,101 @@
+{% extends "includes/base.twig" %}
+{% block contenu %}
+    <article id="contenu">
+        <div class="large_bouton_operation">
+            <a href="?page=entreprise&action=rechercher" class="icon_rechercher">Rechercher une entreprise</a>
+            <a href="?page=entreprise&action=ajouter" class="icon_ajouter">Ajouter une entreprise</a>
+        </div>
+        <hr>
+        <select style="width: 25%" id="ajouter">
+            <option value="">--Sélectionner une option--</option>
+            <option value="0">Opération</option>
+            <option value="1">Entreprise</option>
+            <option value="2">Responsable</option>
+            <option value="3">Adresse</option>
+            <option value="4">Tel</option>
+            <option value="5">Fax</option>
+            <option value="6">Email</option>
+            <option value="7">Site</option>
+            <option value="8">Niveau</option>
+            <option value="9">Spécialité</option>
+        </select>
+        <input type="button" onclick="ajouterColonne()" value="Ajouter">
+        <br><br>
+
+        <table class="list">
+            <thead>
+                <tr>
+                    <th>
+                        <span>Opération</span>
+                        <a href="#" onclick="supprimerColonne(0)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th>
+                        <span>Entreprise</span>
+                        <a href="#" onclick="supprimerColonne(1)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th>
+                        <span>Responsable</span>
+                        <a href="#" onclick="supprimerColonne(2)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th>
+                        <span>Adresse</span>
+                        <a href="#" onclick="supprimerColonne(3)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th style="display: none">
+                        <span>Tel</span>
+                        <a href="#" onclick="supprimerColonne(4)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th style="display: none">
+                        <span>Fax</span>
+                        <a href="#" onclick="supprimerColonne(5)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th style="display: none">
+                        <span>Email</span>
+                        <a href="#" onclick="supprimerColonne(6)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th>
+                        <span>Site</span>
+                        <a href="#" onclick="supprimerColonne(7)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th style="display: none">
+                        <span>Niveau</span>
+                        <a href="#" onclick="supprimerColonne(8)" title="Supprimer la colonne">-</a>
+                    </th>
+                    <th>
+                        <span>Spécialité</span>
+                        <a href="#" onclick="supprimerColonne(9)" title="Supprimer la colonne">-</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entreprise in entreprises %}
+                <tr>
+                    <td>
+                        <div class="bouton_operation center">
+                            <a href="?page=entreprise&action=voir&id={{ entreprise.num_entreprise }}" class="icon_voir"></a>
+                            <a href="#" class="icon_inscrire"></a>
+                            <a href="?page=entreprise&action=modifier&id={{ entreprise.num_entreprise }}" class="icon_modifier"></a>
+                            <a href="?page=entreprise&action=supprimer&id={{ entreprise.num_entreprise }}" class="icon_supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?')"></a>
+                        </div>
+                    </td>
+                    <td>{{ entreprise.raison_sociale }}</td>
+                    <td>{{ entreprise.nom_contact }}</td>
+                    <td>{{ entreprise.rue_entreprise }}<br>{{ entreprise.cp_entreprise }} {{ entreprise.ville_entreprise }}</td>
+                    <td style="display: none">{{ entreprise.tel_entreprise }}</td>
+                    <td style="display: none">{{ entreprise.fax_entreprise }}</td>
+                    <td style="display: none">{{ entreprise.email }}</td>
+                    <td>
+                        {% if entreprise.site_entreprise is not empty %}
+                        <div class="bouton_operation center">
+                            <a href="{{ entreprise.site_entreprise }}" target="_blank" class="icon_website"></a>
+                        </div>
+                        {% endif %}
+                    </td>
+                    <td style="display: none">{{ entreprise.niveau }}</td>
+                    <td>{{ entreprise.specialite }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </article>
+{% endblock %}

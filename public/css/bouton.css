@@ -19,7 +19,7 @@
 .icon_inscrire {background-image:url(../icons/inscrire.png);}
 .icon_website {background-image:url(../icons/lien.png);}
 
-input[type="submit"], input[type="button"], .large_bouton_operation a, .bouton_operation a, .fake_bouton
+input[type="submit"], input[type="button"], input[type="reset"], .large_bouton_operation a, .bouton_operation a, .fake_bouton
 {
     background-color: #183080;
     border: 1px solid #0A1840;
@@ -30,7 +30,7 @@ input[type="submit"], input[type="button"], .large_bouton_operation a, .bouton_o
     padding-right: 35px;
 }
 
-input[type="submit"]:hover, input[type="button"]:hover, .large_bouton_operation a:hover, .bouton_operation a:hover, .fake_bouton:hover
+input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hover, .large_bouton_operation a:hover, .bouton_operation a:hover, .fake_bouton:hover
 {
     background-color: #3040A0;
 }

@@ -1,0 +1,50 @@
+{% extends "includes/base.twig" %}
+{% block contenu %}
+    <header>
+        <h1>{{ entreprise.raison_sociale }}</h1>
+        <hr>
+    </header>
+    <article id="contenu">
+        <h1>Entrée</h1>
+        <div class="deux_colonnes">
+            <div class="information">
+                <h3>Information</h3>
+                <strong>Nom de l'entreprise</strong> : {{ entreprise.raison_sociale }}<br>
+                <strong>Nom du contact</strong> : {{ entreprise.nom_contact }}<br>
+                <strong>Nom du responsable</strong> : {{ entreprise.nom_resp }}
+            </div>
+            <div class="information">
+                <h3>Contact</h3>
+                <strong>Rue</strong> : {{ entreprise.rue_entreprise }}<br>
+                <strong>Code postal</strong> : {{ entreprise.cp_entreprise }}<br>
+                <strong>Ville</strong> : {{ entreprise.ville_entreprise }}<br>
+                <strong>Téléphone</strong> : {{ entreprise.tel_entreprise }}<br>
+                <strong>Fax</strong> : {{ entreprise.fax_entreprise }}<br>
+                <strong>Email</strong> : {{ entreprise.email }}
+            </div>
+        </div>
+        <div class="deux_colonnes">
+            <div class="information">
+                <h3>Divers</h3>
+                <strong>Observation</strong> : {{ entreprise.observation }}<br>
+                <strong>Url du site</strong> : {{ entreprise.site_entreprise }}<br>
+                <strong>Niveau</strong> : {{ entreprise.niveau }}<br>
+                <strong>Spécialité</strong> : {{ entreprise.specialite }}
+            </div>
+        </div>
+        <hr>
+        <h1>Stage</h1>
+        <table class="list">
+            <thead>
+            <tr>
+                <th><span class="center">Opération</span></th>
+                <th><span class="center">Étudiant</span></th>
+                <th><span class="center">Projet</span></th>
+            </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </article>
+{% endblock %}

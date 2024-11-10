@@ -2,12 +2,47 @@
 // Récupérer les paramètres de l'URL
 $page = $_GET['page'] ?? null; // Page active
 $action = $_GET['action'] ?? null; // Action de la route
+$id = $_GET['id'] ?? null; // Id de l'entreprise
 
 // Initialisation du contrôleur
 $controller = null;
 $method = null;
 
 switch ($page) { // TODO faire un double switch, un switch($action) imbriqué dans un switch($page)
+    case 'entreprise':
+        $controller = 'EntrepriseController';
+        switch ($action) {
+            case 'index':
+                $method = 'index';
+                break;
+            case 'rechercher':
+                $method = 'rechercherEntreprise';
+                break;
+            case 'ajouter':
+                $method = 'ajouterEntreprise';
+                break;
+            case 'voir':
+                $method = 'voirEntreprise';
+                break;
+            case 'modifier':
+                $method = 'modifierEntreprise';
+                break;
+            case 'supprimer':
+                $method = 'supprimerEntreprise';
+                break;
+            default:
+                $method = 'index'; // Méthode par défaut si l'action n'est pas reconnue
+                break;
+        }
+        break;
+    case 'stagiaire':
+        $controller = 'StagiaireController';
+        $method = 'index';
+        break;
+    case 'inscription':
+        $controller = 'InscriptionController';
+        $method = 'index';
+        break;
     case 'aide':
         $controller = 'AideController';
         $method = 'index';
@@ -23,10 +58,12 @@ if ($controller && $method) {
     require_once '../config/database.php'; // Connexion à la base de données
     require_once '../src/Controller/' . $controller . '.php'; // Importe le controller actif
     $controllerClass = 'App\\Controller\\' . $controller;
-    $controllerObject = new $controllerClass();
-
-    $controllerObject->$method();
+    $controllerObject = new $controllerClass($pdo); // TODO certaines classes devront être initialiser avec $pdo en paramètre du constructeur
+    if($action='voir' || $action='modifier' || $action='supprimer') {
+        $controllerObject->$method($id);
+    } else {
+        $controllerObject->$method();
+    }
 } else {
     echo "404 Not Found";
 }
-?>
