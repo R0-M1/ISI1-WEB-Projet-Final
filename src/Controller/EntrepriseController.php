@@ -42,7 +42,31 @@ class EntrepriseController extends BaseController
             // Redirigez vers la page d'index
             header('Location: ?page=entreprise&action=index');
         } else {
-            echo $this->renderView('entreprise/ajouterEntreprise.twig');
+            echo $this->renderView('entreprise/formulaireEntreprise.twig');
+        }
+    }
+
+    public function modifierEntreprise($id) {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nomEntreprise = $_POST['nom_entreprise'] ?? '';
+            $nomContact = $_POST['nom_contact'] ?? '';
+            $nomResponsable = $_POST['nom_responsable'] ?? '';
+            $rue = $_POST['rue'] ?? '';
+            $codePostal = $_POST['code_postal'] ?? '';
+            $ville = $_POST['ville'] ?? '';
+            $telephone = $_POST['telephone'] ?? '';
+            $fax = $_POST['fax'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $observation = $_POST['observation'] ?? '';
+            $url = $_POST['url'] ?? '';
+            $niveau = $_POST['niveau'] ?? '';
+            $specialite = $_POST['specialite'] ?? [];
+
+            $this->userModel->modifierEntreprise($id, $nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau, $specialite);
+
+            header('Location: ?page=entreprise&action=index');
+        } else {
+            echo $this->renderView('entreprise/formulaireEntreprise.twig', ['entreprise' => $this->userModel->getEntrepriseById($id)]);
         }
     }
 

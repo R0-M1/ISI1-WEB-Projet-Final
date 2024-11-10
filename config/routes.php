@@ -1,4 +1,10 @@
 <?php
+use App\Controller\AccueilController;
+use App\Controller\EntrepriseController;
+use App\Controller\StagiaireController;
+use App\Controller\InscriptionController;
+use App\Controller\AideController;
+
 // Récupérer les paramètres de l'URL
 $page = $_GET['page'] ?? null; // Page active
 $action = $_GET['action'] ?? null; // Action de la route
@@ -56,7 +62,7 @@ switch ($page) { // TODO faire un double switch, un switch($action) imbriqué da
 // Vérifier si le contrôleur et la méthode sont définis et appelés
 if ($controller && $method) {
     require_once '../config/database.php'; // Connexion à la base de données
-    require_once '../src/Controller/' . $controller . '.php'; // Importe le controller actif
+    //require_once '../src/Controller/' . $controller . '.php'; // Importe le controller actif
     $controllerClass = 'App\\Controller\\' . $controller;
     $controllerObject = new $controllerClass($pdo); // TODO certaines classes devront être initialiser avec $pdo en paramètre du constructeur
     if($action='voir' || $action='modifier' || $action='supprimer') {

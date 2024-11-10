@@ -1,14 +1,32 @@
 # ISI1-WEB-Projet-Final
 
-### A faire :
+### A faire
+***
+`Entreprise`
+* Rechercher entreprise (dans index(), si POST alors afficher seulement les entreprises correspondantes aux critères)
+* Ajouter entreprise ✅ (ajouter les spécialités dans la table spec_entreprise)
+* Afficher/enlever information ✅
+* Voir entreprise ✅ (mettre à jour avec les stages)
+* Supprimer entreprise ✅
+* Modifier entreprise ✅ (ajouter les spécialités dans la table spec_entreprise)
 
+`Stagiaire`
+* Rechercher un stagiaire
+* Inscrire un étudiant
+* Voir les infos d'un stagiaire
+* Supprimer un stagiaire
+* Modifier un stagiaire
 
-### Problèmes rencontrés :
+`Autres`
+* Système de connexion
+* Faire la page d'aide
+
+### Problèmes rencontrés
+***
 * twig ne render pas les background-image de css donc j'ai du utiliser un chemin absolu lors que l'importation de la feuille de style pour que ça marche
 * Pour la barre de navigation, j'ai du passer en parametre de twig->render() la page active et appliquer la class:"actif" sur le bon élément en utilisant ceci :  
 ```{{ page == 'accueil' ? 'actif' : '' }}```
 * Demander s'il faut aller chercher dynamiquement les noms des spécialités ou bien écrire un nombre défini de spécialités dans la liste déroulantes de ajouter.twig
-
 
 ### Organisation de l'archive
 ***
@@ -29,5 +47,5 @@
 
 ### Membres
 ***
-AILLAUD Romain
+AILLAUD Romain  
 BEN MAAOUIA Ahdi

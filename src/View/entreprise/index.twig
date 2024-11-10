@@ -92,7 +92,11 @@
                         {% endif %}
                     </td>
                     <td style="display: none">{{ entreprise.niveau }}</td>
-                    <td>{{ entreprise.specialite }}</td>
+                    <td>
+                        {% for spe in entreprise.specialite %}
+                            {{ spe }}<br>
+                        {% endfor %}
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

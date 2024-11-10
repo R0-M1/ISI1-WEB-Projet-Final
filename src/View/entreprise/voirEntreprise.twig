@@ -29,7 +29,10 @@
                 <strong>Observation</strong> : {{ entreprise.observation }}<br>
                 <strong>Url du site</strong> : {{ entreprise.site_entreprise }}<br>
                 <strong>Niveau</strong> : {{ entreprise.niveau }}<br>
-                <strong>Spécialité</strong> : {{ entreprise.specialite }}
+                <strong>Spécialité</strong> :
+                {% for spe in entreprise.specialite %}
+                    {{ spe }}
+                {% endfor %}
             </div>
         </div>
         <hr>
@@ -43,7 +46,7 @@
             </tr>
             </thead>
             <tbody>
-                
+
             </tbody>
         </table>
     </article>
