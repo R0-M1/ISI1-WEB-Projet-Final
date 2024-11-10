@@ -26,7 +26,7 @@
 * twig ne render pas les background-image de css donc j'ai du utiliser un chemin absolu lors que l'importation de la feuille de style pour que ça marche
 * Pour la barre de navigation, j'ai du passer en parametre de twig->render() la page active et appliquer la class:"actif" sur le bon élément en utilisant ceci :  
 ```{{ page == 'accueil' ? 'actif' : '' }}```
-* Demander s'il faut aller chercher dynamiquement les noms des spécialités ou bien écrire un nombre défini de spécialités dans la liste déroulantes de ajouter.twig
+* Demander s'il faut aller chercher dynamiquement les noms des spécialités ou bien écrire un nombre défini de spécialités dans la liste déroulantes de formulaireEntreprise.twig
 
 ### Organisation de l'archive
 ***

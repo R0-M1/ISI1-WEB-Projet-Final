@@ -14,7 +14,7 @@ $id = $_GET['id'] ?? null; // Id de l'entreprise
 $controller = null;
 $method = null;
 
-switch ($page) { // TODO faire un double switch, un switch($action) imbriqué dans un switch($page)
+switch ($page) {
     case 'entreprise':
         $controller = 'EntrepriseController';
         switch ($action) {
@@ -64,7 +64,7 @@ if ($controller && $method) {
     require_once '../config/database.php'; // Connexion à la base de données
     //require_once '../src/Controller/' . $controller . '.php'; // Importe le controller actif
     $controllerClass = 'App\\Controller\\' . $controller;
-    $controllerObject = new $controllerClass($pdo); // TODO certaines classes devront être initialiser avec $pdo en paramètre du constructeur
+    $controllerObject = new $controllerClass($pdo); // TODO pas toutes les classes doivent etre construites avec $pdo. Etre sur que ça ne pose pas de problème de construire toutes les classes avec ça
     if($action='voir' || $action='modifier' || $action='supprimer') {
         $controllerObject->$method($id);
     } else {
