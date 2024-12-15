@@ -14,7 +14,7 @@
 {
     margin: 0px;
     border-radius: 3px;
-    
+
 }
 
 .list th
@@ -37,7 +37,7 @@
     width: -o-calc(100% - 18px);
     width: calc(100% - 18px);
     text-align: center;
-    
+
 }
 
 .list th a

@@ -1,9 +1,5 @@
 <?php
-use App\Controller\AccueilController;
-use App\Controller\EntrepriseController;
-use App\Controller\StagiaireController;
-use App\Controller\InscriptionController;
-use App\Controller\AideController;
+use App\Controller;
 
 // Récupérer les paramètres de l'URL
 $page = $_GET['page'] ?? null; // Page active
@@ -43,7 +39,26 @@ switch ($page) {
         break;
     case 'stagiaire':
         $controller = 'StagiaireController';
-        $method = 'index';
+        switch ($action) {
+            case 'index':
+                $method = 'index';
+                break;
+            case 'rechercher':
+                $method = 'rechercherStagiaire';
+                break;
+            case 'voir':
+                $method = 'voirStagiaire.twig';
+                break;
+            case 'modifier':
+                $method = 'modifierStagiaire';
+                break;
+            case 'supprimer':
+                $method = 'supprimerStagiaire';
+                break;
+            default:
+                $method = 'index'; // Méthode par défaut si l'action n'est pas reconnue
+                break;
+        }
         break;
     case 'inscription':
         $controller = 'InscriptionController';

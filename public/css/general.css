@@ -7,7 +7,7 @@ body
 {
     margin: 0px;
     background-color: #EEE;
-    font-family: 'Courier New', verdana;
+    font-family: 'Roboto', sans-serif;
 }
 
 nav
@@ -160,14 +160,15 @@ article h2
     vertical-align: top;
 }
 
-.message, .connection
-{
-    background-color: #222;
-    border-radius: 5px;
+.message, .connection {
+    background: linear-gradient(135deg, #0eabd9, #0c87b3); /* Gradient for a dynamic look */
+    border-radius: 12px; /* Slightly more rounded corners for a softer appearance */
     color: white;
-    padding: 20px 30px 20px 30px;    
-    margin: auto;
+    padding: 20px 30px;
+    margin: auto auto 10px; /* Increased bottom margin for better spacing */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
 }
+
 
 .message h1
 {

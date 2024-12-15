@@ -3,7 +3,7 @@
 ### A faire
 ***
 `Entreprise`
-* Rechercher entreprise (dans index(), si POST alors afficher seulement les entreprises correspondantes aux critères)
+* Rechercher entreprise ✅
 * Ajouter entreprise ✅ (ajouter les spécialités dans la table spec_entreprise)
 * Afficher/enlever information ✅
 * Voir entreprise ✅ (mettre à jour avec les stages)
@@ -14,7 +14,7 @@
 * Rechercher un stagiaire
 * Inscrire un étudiant
 * Voir les infos d'un stagiaire
-* Supprimer un stagiaire
+* Supprimer un stagiaire ✅
 * Modifier un stagiaire
 
 `Autres`

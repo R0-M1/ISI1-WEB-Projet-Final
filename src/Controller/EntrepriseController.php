@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 use App\Model\Entreprise;
 
 class EntrepriseController extends BaseController
@@ -13,16 +15,21 @@ class EntrepriseController extends BaseController
 
     public function index()
     {
-        echo $this->renderView('entreprise/index.twig', ['entreprises' => $this->userModel->getAllEntreprises()]);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            echo $this->renderView("entreprise/index.twig", ['entreprises' => $this->userModel->getEntreprisesByCriteria($_POST['nom'] ?? '', $_POST['ville'] ?? '', $_POST['specialite'] ?? '')]);
+        } else {
+            echo $this->renderView('entreprise/index.twig', ['entreprises' => $this->userModel->getAllEntreprises()]);
+        }
     }
 
-    public function rechercherEntreprise(){
+    public function rechercherEntreprise()
+    {
         echo $this->renderView('entreprise/rechercherEntreprise.twig');
     }
 
     public function ajouterEntreprise()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nomEntreprise = $_POST['nom_entreprise'] ?? '';
             $nomContact = $_POST['nom_contact'] ?? '';
             $nomResponsable = $_POST['nom_responsable'] ?? '';
@@ -46,8 +53,9 @@ class EntrepriseController extends BaseController
         }
     }
 
-    public function modifierEntreprise($id) {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    public function modifierEntreprise($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nomEntreprise = $_POST['nom_entreprise'] ?? '';
             $nomContact = $_POST['nom_contact'] ?? '';
             $nomResponsable = $_POST['nom_responsable'] ?? '';
@@ -76,7 +84,8 @@ class EntrepriseController extends BaseController
         header('Location: ?page=entreprise&action=index');
     }
 
-    public function voirEntreprise($id) {
+    public function voirEntreprise($id)
+    {
         echo $this->renderView('entreprise/voirEntreprise.twig', ['entreprise' => $this->userModel->getEntrepriseById($id)]);
     }
 }

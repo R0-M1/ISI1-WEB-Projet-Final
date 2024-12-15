@@ -16,6 +16,16 @@ class Entreprise {
         return $result;
     }
 
+    public function getEntreprisesByCriteria($nom, $ville, $specialite) {
+        $stmt = $this->pdo->prepare("SELECT e.*, GROUP_CONCAT(s.libelle) AS specialite FROM entreprise e LEFT JOIN spec_entreprise se ON e.num_entreprise=se.num_entreprise LEFT JOIN specialite s ON se.num_spec=s.num_spec WHERE e.raison_sociale LIKE ? AND e.ville_entreprise LIKE ? GROUP BY e.num_entreprise HAVING (?='' OR FIND_IN_SET(?, GROUP_CONCAT(s.libelle))) ORDER BY raison_sociale");
+        $stmt->execute(['%'.$nom.'%', '%'.$ville.'%', $specialite, $specialite]);
+        $result = $stmt->fetchAll();
+        foreach ($result as &$ligne) {
+            $ligne['specialite'] = explode(",", $ligne['specialite']);
+        }
+        return $result;
+    }
+
     public function getEntrepriseById($num_entreprise) {
         $stmt = $this->pdo->prepare("SELECT e.*, GROUP_CONCAT(s.libelle) AS specialite FROM entreprise e LEFT JOIN spec_entreprise se ON e.num_entreprise=se.num_entreprise LEFT JOIN specialite s ON se.num_spec=s.num_spec WHERE e.num_entreprise=? GROUP BY e.num_entreprise ORDER BY raison_sociale");
         $stmt->execute([$num_entreprise]);

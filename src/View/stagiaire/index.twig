@@ -1,0 +1,45 @@
+{% extends "includes/base.twig" %}
+{% block contenu %}
+    <article id="contenu">
+        <div class="large_bouton_operation">
+            <a href="?page=stagiaire&action=rechercher" class="icon_rechercher">Rechercher un stagiaire existant</a>
+            <a href="?page=stagiaire&action=ajouter" class="icon_ajouter">Ajouter un étudiant</a>
+        </div>
+        <hr>
+        <table class="list">
+            <thead>
+            <tr>
+                <th>
+                    <span>Opération</span>
+                </th>
+                <th>
+                    <span>Etudiant</span>
+                </th>
+                <th>
+                    <span>Entreprises</span>
+                </th>
+                <th>
+                    <span>Professeur</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for stagiaire in stagiaires %}
+                <tr>
+                    <td>
+
+                        <div class="bouton_operation center">
+                            <a href="?page=stagiaire&action=voir&id={{ stagiaire.num_stage }}" class="icon_voir"></a>
+                            <a href="?page=stagiaire&action=modifier&id={{ stagiaire.num_stage }}" class="icon_modifier"></a>
+                            <a href="?page=stagiaire&action=supprimer&id={{ stagiaire.num_stage }}" class="icon_supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce stagiaire ?')"></a>
+                        </div>
+                    </td>
+                    <td>{{ stagiaire.nom_etudiant }} {{ stagiaire.prenom_etudiant }}</td>
+                    <td>{{ stagiaire.raison_sociale }}</td>
+                    <td>{{ stagiaire.nom_prof }} {{ stagiaire.prenom_prof }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </article>
+{% endblock %}
