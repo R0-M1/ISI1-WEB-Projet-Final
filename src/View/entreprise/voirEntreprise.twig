@@ -46,7 +46,19 @@
             </tr>
             </thead>
             <tbody>
-
+            {% for stage in stages %}
+                <tr>
+                    <td>
+                        <div class="bouton_operation center">
+                            <a href="?page=stagiaire&action=voir&id={{ stage.num_etudiant }}" class="icon_voir"></a>
+                            <a href="?page=inscription&action=modifier&id={{ stage.num_stage }}" class="icon_modifier"></a>
+                            <a href="?page=stagiaire&action=supprimer_stage&id={{ stage.num_stage }}" class="icon_supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce stage ?')"></a>
+                        </div>
+                    </td>
+                    <td>{{ stage.nom_etudiant }} {{ stage.prenom_etudiant }}</td>
+                    <td>{{ stage.desc_projet|replace({'</br>': '<br>'})|raw }}</td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </article>

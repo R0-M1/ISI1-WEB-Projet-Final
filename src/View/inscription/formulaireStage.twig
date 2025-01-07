@@ -1,0 +1,97 @@
+{% extends "includes/base.twig" %}
+{% block contenu %}
+    <article id="contenu">
+        <form method="post" action="index.php?page=inscription&action={{ stage is not null ? 'modifier&id=' ~ stage.num_stage : 'inscrire' }}">
+            <table class="list">
+                <thead>
+                <tr>
+                    <th colspan="2">Contact</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Entreprise* :</td>
+                    <td>
+                        <select name="entreprise" required>
+                            {% for entreprise in entreprises %}
+                            <option value="{{entreprise.num_entreprise}}" {% if stage.num_entreprise == entreprise.num_entreprise or currentEntreprise.num_entreprise == entreprise.num_entreprise %}selected{% endif %}>{{entreprise.raison_sociale}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Etudiant* :</td>
+                    <td>
+                        <select name="etudiant" required>
+                            {% for etudiant in etudiants %}
+                                <option value="{{etudiant.num_etudiant}}" {% if etudiant.num_etudiant == stage.num_etudiant %}selected{% endif %}>{{ etudiant.prenom_etudiant }} {{etudiant.nom_etudiant}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Professeur* :</td>
+                    <td>
+                        <select name="professeur" required>
+                            {% for professeur in professeurs %}
+                                <option value="{{professeur.num_prof}}" {% if professeur.num_prof == stage.num_prof %}selected{% endif %}>{{ professeur.prenom_prof }} {{professeur.nom_prof}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <table class="list">
+                <thead>
+                <tr>
+                    <th colspan="2">Description du stage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Date de debut du stage* :</td>
+                    <td>
+                        <fieldset><input type="date" name="date_debut" value="{{ stage.debut_stage|date("Y-m-d") }}" required></fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date de fin du stage* :</td>
+                    <td>
+                        <fieldset><input type="date" name="date_fin" value="{{ stage.fin_stage|date("Y-m-d") }}" required></fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Type de stage* :</td>
+                    <td>
+                        <select name="type_stage" required>
+                            <option value="">--Sélectionner une option--</option>
+                            <option value="stage" {% if stage.type_stage == 'stage' %}selected{% endif %}>Stage</option>
+                            <option value="alternance" {% if stage.type_stage == 'alternance' %}selected{% endif %}>Alternance</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description du projet :</td>
+                    <td>
+                        <fieldset><textarea name="description">{{ stage.desc_projet }}</textarea></fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Observation :</td>
+                    <td>
+                        <fieldset><textarea name="observation">{{ stage.observation_stage }}</textarea></fieldset>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="aide">
+                <a>Les champs comportant le symbole * sont obligatoires</a>
+            </div>
+            <br>
+            <input type="submit" value="{{ stage is not null ? 'Modifier' : 'Inscrire' }}">
+            <input type="reset" value="Reset">
+        </form>
+    </article>
+{% endblock %}

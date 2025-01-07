@@ -1,0 +1,58 @@
+{% extends "includes/base.twig" %}
+{% block contenu %}
+    <header>
+        <h1>{{ stagiaire[0].nom_etudiant }} {{ stagiaire[0].prenom_etudiant }}</h1>
+        <div class="bouton_operation"><a href="?page=stagiaire&action=modifier_etu&id={{ stagiaire[0].num_etudiant }}" class="icon_modifier"></a></div>
+        <hr>
+    </header>
+    <article id="contenu">
+        <h1>Entrée</h1>
+        <div class="information">
+            <h3>Information sur l'étudiant</h3>
+            <strong>Nom de l'étudiant</strong> : {{ stagiaire[0].nom_etudiant }}<br>
+            <strong>Prénom de l'étudiant</strong> : {{ stagiaire[0].prenom_etudiant }}<br>
+            <strong>En activité</strong> : {% if stagiaire[0].en_activite %}✅{% else %}❌{% endif %}<br>
+            <strong>Nom classe</strong> : {{ stagiaire[0].nom_classe }}<br>
+            <strong>Date d'obtention du diplome</strong> : {{ stagiaire[0].annee_obtention }}
+        </div>
+        <hr>
+        <h1>Stage</h1>
+        <table class="list">
+            <thead>
+            <tr>
+                <th><span class="center">Opération</span></th>
+                <th><span class="center">Type stage</span></th>
+                <th><span class="center">Date debut du stage</span></th>
+                <th><span class="center">Date fin du stage</span></th>
+                <th><span class="center">Description du stage</span></th>
+                <th><span class="center">Entreprise</span></th>
+                <th><span class="center">Nom professeur</span></th>
+                <th><span class="center">Email professeur</span></th>
+                <th><span class="center">Observation</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for stage in stagiaire %}
+                {% if stage.num_stage is not null %}
+                <tr>
+                    <td>
+                        <div class="bouton_operation center">
+                            <a href="?page=inscription&action=modifier&id={{ stage.num_stage }}" class="icon_modifier"></a>
+                            <a href="?page=stagiaire&action=supprimer_stage&id={{ stage.num_stage }}" class="icon_supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce stage ?')"></a>
+                        </div>
+                    </td>
+                    <td>{{ stage.type_stage }}</td>
+                    <td>{{ stage.debut_stage }}</td>
+                    <td>{{ stage.fin_stage }}</td>
+                    <td>{{ stage.desc_projet|replace({'</br>': '<br>'})|raw }}</td>
+                    <td><div class="bouton_operation center"><a href="?page=entreprise&action=voir&id={{ stage.num_entreprise }}" class="icon_voir"></a></div></td>
+                    <td>{{ stage.nom_prof }} {{ stage.prenom_prof }}</td>
+                    <td>{{ stage.emailP }}</td>
+                    <td>{{ stage.observation_stage }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </article>
+{% endblock %}

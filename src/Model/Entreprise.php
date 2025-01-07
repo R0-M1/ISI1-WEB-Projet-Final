@@ -73,4 +73,11 @@ class Entreprise {
 
         return $stmt->execute([$nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau, $id]);
     }
+
+    public function getStageByEntrepriseId($num_entreprise) {
+        $stmt = $this->pdo->prepare("SELECT s.num_stage, e.num_etudiant, e.nom_etudiant, e.prenom_etudiant, s.desc_projet FROM stage s JOIN etudiant e ON s.num_etudiant = e.num_etudiant WHERE num_entreprise=?");
+        $stmt->execute([$num_entreprise]);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }

@@ -6,19 +6,19 @@ use App\Model\Entreprise;
 
 class EntrepriseController extends BaseController
 {
-    private $userModel;
+    private $entrepriseModel;
 
     public function __construct($pdo)
     {
-        $this->userModel = new Entreprise($pdo);
+        $this->entrepriseModel = new Entreprise($pdo);
     }
 
     public function index()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            echo $this->renderView("entreprise/index.twig", ['entreprises' => $this->userModel->getEntreprisesByCriteria($_POST['nom'] ?? '', $_POST['ville'] ?? '', $_POST['specialite'] ?? '')]);
+            echo $this->renderView("entreprise/index.twig", ['entreprises' => $this->entrepriseModel->getEntreprisesByCriteria($_POST['nom'] ?? '', $_POST['ville'] ?? '', $_POST['specialite'] ?? '')]);
         } else {
-            echo $this->renderView('entreprise/index.twig', ['entreprises' => $this->userModel->getAllEntreprises()]);
+            echo $this->renderView('entreprise/index.twig', ['entreprises' => $this->entrepriseModel->getAllEntreprises()]);
         }
     }
 
@@ -44,7 +44,7 @@ class EntrepriseController extends BaseController
             $niveau = $_POST['niveau'] ?? '';
             $specialite = $_POST['specialite'] ?? [];
 
-            $this->userModel->ajouterEntreprise($nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau, $specialite);
+            $this->entrepriseModel->ajouterEntreprise($nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau, $specialite);
 
             // Redirigez vers la page d'index
             header('Location: ?page=entreprise&action=index');
@@ -70,22 +70,22 @@ class EntrepriseController extends BaseController
             $niveau = $_POST['niveau'] ?? '';
             $specialite = $_POST['specialite'] ?? [];
 
-            $this->userModel->modifierEntreprise($id, $nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau, $specialite);
+            $this->entrepriseModel->modifierEntreprise($id, $nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau, $specialite);
 
             header('Location: ?page=entreprise&action=index');
         } else {
-            echo $this->renderView('entreprise/formulaireEntreprise.twig', ['entreprise' => $this->userModel->getEntrepriseById($id)]);
+            echo $this->renderView('entreprise/formulaireEntreprise.twig', ['entreprise' => $this->entrepriseModel->getEntrepriseById($id)]);
         }
     }
 
     public function supprimerEntreprise($id)
     {
-        $this->userModel->supprimerEntreprise($id);
+        $this->entrepriseModel->supprimerEntreprise($id);
         header('Location: ?page=entreprise&action=index');
     }
 
     public function voirEntreprise($id)
     {
-        echo $this->renderView('entreprise/voirEntreprise.twig', ['entreprise' => $this->userModel->getEntrepriseById($id)]);
+        echo $this->renderView('entreprise/voirEntreprise.twig', ['entreprise' => $this->entrepriseModel->getEntrepriseById($id), 'stages' => $this->entrepriseModel->getStageByEntrepriseId($id)]);
     }
 }

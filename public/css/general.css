@@ -10,8 +10,7 @@ body
     font-family: 'Roboto', sans-serif;
 }
 
-nav
-{
+nav {
     background-color: #222;
     width: 290px;
     height: 100%;
@@ -23,6 +22,7 @@ nav
     top: 0px;
     left: 0px;
     z-index: 1;
+    transition: width 0.3s ease;
 }
 
 nav a
@@ -38,7 +38,7 @@ nav a
     height: 23px;
 }
 
-nav a.actif 
+nav a.actif
 {
     background-color: #3050F0;
 }
@@ -87,12 +87,14 @@ h2 {font-size: 1.2em;}
 
 #corps
 {
-    height: 100%;
     position: absolute;
     top: 0px;
     left: 300px;
     right: 0px;
     margin-top: 30px;
+    height: auto;
+    bottom:0;
+    transition: left 0.3s ease;
 }
 
 .reduit nav {width: 70px;}
@@ -103,7 +105,7 @@ header h1
 {
     margin: 0px;
     font-size: 2.5em;
-    
+
 }
 
 header
@@ -161,12 +163,13 @@ article h2
 }
 
 .message, .connection {
-    background: linear-gradient(135deg, #0eabd9, #0c87b3); /* Gradient for a dynamic look */
-    border-radius: 12px; /* Slightly more rounded corners for a softer appearance */
+    background: linear-gradient(180deg, #03224c, #222);
+    width: auto;
+    border-radius: 12px;
     color: white;
     padding: 20px 30px;
-    margin: auto auto 10px; /* Increased bottom margin for better spacing */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    margin: auto auto 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 
@@ -197,5 +200,73 @@ article h2
     border-radius: 3px;
     padding: 15px;
     text-align: center;
+}
+
+
+.black_box
+{
+    background-color: #222222;
+    color: white;
+    padding: 5px 20px 20px;
+    border-radius: 5px;
+}
+
+.form_box
+{
+    margin-top: 100px;
+    margin-inline: auto;
+    width: 400px;
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+label {
+    width: 250px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.radio-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+.form_box input[type=submit]
+{
+    align-self: center;
+}
+
+.container {
+    text-align: center;
+    border: 2px solid #f5c6cb;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f5c6cb;
+    color: #721c24;
+    font-family: Arial, sans-serif;
+    height: 150px;
+}
+
+.container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.container a {
+    font-size: 1.2rem;
 }
 

@@ -27,11 +27,15 @@
             {% for stagiaire in stagiaires %}
                 <tr>
                     <td>
-
                         <div class="bouton_operation center">
-                            <a href="?page=stagiaire&action=voir&id={{ stagiaire.num_stage }}" class="icon_voir"></a>
-                            <a href="?page=stagiaire&action=modifier&id={{ stagiaire.num_stage }}" class="icon_modifier"></a>
-                            <a href="?page=stagiaire&action=supprimer&id={{ stagiaire.num_stage }}" class="icon_supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce stagiaire ?')"></a>
+                            <a href="?page=stagiaire&action=voir&id={{ stagiaire.num_etudiant }}" class="icon_voir"></a>
+                            {% if stagiaire.num_stage is not null %}
+                            <a href="?page=inscription&action=modifier&id={{ stagiaire.num_stage }}" class="icon_modifier"></a>
+                            {% endif %}
+                            <a href="?page=stagiaire&action={% if stagiaire.num_stage is null %}supprimer_etu&id={{ stagiaire.num_etudiant }}{% else %}supprimer_stage&id={{ stagiaire.num_stage }}{% endif %}"
+                               class="icon_supprimer"
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer {% if stagiaire.num_stage is null %}cet étudiant ?{% else %}ce stage ?{% endif %}')">
+                            </a>
                         </div>
                     </td>
                     <td>{{ stagiaire.nom_etudiant }} {{ stagiaire.prenom_etudiant }}</td>

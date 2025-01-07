@@ -7,22 +7,16 @@
         <hr>
         <form action="index.php?page=stagiaire" method="post">
             <fieldset>
-                <label class="center message" for="nom">Nom de l'entreprise :</label>
-                <input type="text" id="nom" name="nom" placeholder="Entrez un nom">
+                <label class="center message" for="nomEntreprise">Nom de l'entreprise :</label>
+                <input type="text" id="nomEntreprise" name="nomEntreprise" placeholder="Entrez un nom">
                 <br><br>
-                <label class="center message" for="ville">Ville de l'entreprise :</label>
-                <input type="text" name="ville" placeholder="Entrez une ville">
+                <label class="center message" for="ville">Nom et prénom du stagiaire :</label>
+                <input type="text" name="nomE" placeholder="Entrez un nom">
+                <input type="text" name="prenomE" placeholder="Entrez un prénom">
                 <br><br>
-                <label class="center message" for="specialite">Spécialité de l'entreprise :</label>
-                <select name="specialite" id="specialite">
-                    <option value="">-- Sélectionnez une spécialité --</option>
-                    <option value="SLAM">SLAM</option>
-                    <option value="SISR">SISR</option>
-                    <option value="AM">AM</option>
-                    <option value="SN">SN</option>
-                    <option value="CG">CG</option>
-                    <option value="NRC">NRC</option>
-                </select>
+                <label class="center message" for="ville">Nom et prénom du professeur :</label>
+                <input type="text" name="nomP" placeholder="Entrez un nom">
+                <input type="text" name="prenomP" placeholder="Entrez un prénom">
             </fieldset>
             <br><br>
             <input type="submit" value="Rechercher">

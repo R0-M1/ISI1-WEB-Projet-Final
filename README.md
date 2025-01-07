@@ -4,21 +4,25 @@
 ***
 `Entreprise`
 * Rechercher entreprise ✅
-* Ajouter entreprise ✅ (ajouter les spécialités dans la table spec_entreprise)
+* Ajouter entreprise ✅~ (ajouter les spécialités dans la table spec_entreprise)
 * Afficher/enlever information ✅
-* Voir entreprise ✅ (mettre à jour avec les stages)
+* Voir entreprise ✅
 * Supprimer entreprise ✅
 * Modifier entreprise ✅ (ajouter les spécialités dans la table spec_entreprise)
+* Inscrire un étudiant à l'entreprise sélectionnée ✅
 
 `Stagiaire`
-* Rechercher un stagiaire
-* Inscrire un étudiant
-* Voir les infos d'un stagiaire
+* Rechercher un stagiaire ✅
+* Ajouter un étudiant ✅
+* Voir les infos d'un stagiaire ✅
 * Supprimer un stagiaire ✅
-* Modifier un stagiaire
+* Modifier un stagiaire ✅
+
+`Inscription`
+* Inscrire un étudiant à un stage ✅
 
 `Autres`
-* Système de connexion
+* Système de connexion ✅
 * Faire la page d'aide
 
 ### Problèmes rencontrés

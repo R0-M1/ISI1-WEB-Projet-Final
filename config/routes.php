@@ -47,13 +47,19 @@ switch ($page) {
                 $method = 'rechercherStagiaire';
                 break;
             case 'voir':
-                $method = 'voirStagiaire.twig';
+                $method = 'voirStagiaire';
                 break;
-            case 'modifier':
-                $method = 'modifierStagiaire';
+            case 'supprimer_stage':
+                $method = 'supprimerStage';
                 break;
-            case 'supprimer':
-                $method = 'supprimerStagiaire';
+            case 'supprimer_etu':
+                $method = 'supprimerEtudiant';
+                break;
+            case 'ajouter':
+                $method = 'ajouterEtudiant';
+                break;
+            case 'modifier_etu':
+                $method = 'modifierEtudiant';
                 break;
             default:
                 $method = 'index'; // Méthode par défaut si l'action n'est pas reconnue
@@ -62,11 +68,29 @@ switch ($page) {
         break;
     case 'inscription':
         $controller = 'InscriptionController';
-        $method = 'index';
+        switch ($action) {
+            case 'inscrire':
+                $method = 'inscrire';
+                break;
+            case 'modifier':
+                $method = 'modifier';
+                break;
+            default:
+                $method = 'inscrire'; // Méthode par défaut
+                break;
+        }
         break;
     case 'aide':
         $controller = 'AideController';
         $method = 'index';
+        break;
+    case 'connexion':
+        $controller = 'ConnexionController';
+        $method = 'index';
+        break;
+    case 'deconnexion':
+        $controller = 'ConnexionController';
+        $method = 'deconnexion';
         break;
     default:
         $controller = 'AccueilController';
@@ -80,7 +104,7 @@ if ($controller && $method) {
     //require_once '../src/Controller/' . $controller . '.php'; // Importe le controller actif
     $controllerClass = 'App\\Controller\\' . $controller;
     $controllerObject = new $controllerClass($pdo); // TODO pas toutes les classes doivent etre construites avec $pdo. Etre sur que ça ne pose pas de problème de construire toutes les classes avec ça
-    if($action='voir' || $action='modifier' || $action='supprimer') {
+    if($id) {
         $controllerObject->$method($id);
     } else {
         $controllerObject->$method();
