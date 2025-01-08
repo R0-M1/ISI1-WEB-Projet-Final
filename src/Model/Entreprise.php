@@ -39,7 +39,20 @@ class Entreprise {
               (raison_sociale, nom_contact, nom_resp, rue_entreprise, cp_entreprise, ville_entreprise, tel_entreprise, fax_entreprise, email, observation, site_entreprise, niveau) 
               VALUES 
               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        return $stmt->execute([$nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau]);
+        $stmt->execute([$nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau]);
+        $num_entreprise = $this->pdo->lastInsertId();
+
+        foreach ($specialite as $spe) {
+            $stmt = $this->pdo->prepare("SELECT num_spec FROM specialite WHERE libelle = ?");
+            $stmt->execute([$spe]);
+            $num_spec = $stmt->fetch()['num_spec'];
+
+            $stmt = $this->pdo->prepare("INSERT INTO spec_entreprise
+                (num_entreprise, num_spec)
+                VALUES 
+                (?, ?)");
+            $stmt->execute([$num_entreprise, $num_spec]);
+        }
     }
     public function supprimerEntreprise($num_entreprise)
     {
@@ -71,7 +84,22 @@ class Entreprise {
             niveau = ?
         WHERE num_entreprise = ?");
 
-        return $stmt->execute([$nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau, $id]);
+        $stmt->execute([$nomEntreprise, $nomContact, $nomResponsable, $rue, $codePostal, $ville, $telephone, $fax, $email, $observation, $url, $niveau, $id]);
+
+        $stmt = $this->pdo->prepare("DELETE FROM spec_entreprise WHERE num_entreprise=?");
+        $stmt->execute([$id]);
+
+        foreach ($specialite as $spe) {
+            $stmt = $this->pdo->prepare("SELECT num_spec FROM specialite WHERE libelle = ?");
+            $stmt->execute([$spe]);
+            $num_spec = $stmt->fetch()['num_spec'];
+
+            $stmt = $this->pdo->prepare("INSERT INTO spec_entreprise
+                (num_entreprise, num_spec)
+                VALUES 
+                (?, ?)");
+            $stmt->execute([$id, $num_spec]);
+        }
     }
 
     public function getStageByEntrepriseId($num_entreprise) {

@@ -103,7 +103,7 @@ if ($controller && $method) {
     require_once '../config/database.php'; // Connexion à la base de données
     //require_once '../src/Controller/' . $controller . '.php'; // Importe le controller actif
     $controllerClass = 'App\\Controller\\' . $controller;
-    $controllerObject = new $controllerClass($pdo); // TODO pas toutes les classes doivent etre construites avec $pdo. Etre sur que ça ne pose pas de problème de construire toutes les classes avec ça
+    $controllerObject = new $controllerClass($pdo);
     if($id) {
         $controllerObject->$method($id);
     } else {

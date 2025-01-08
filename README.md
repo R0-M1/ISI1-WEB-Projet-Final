@@ -1,14 +1,38 @@
 # ISI1-WEB-Projet-Final
 
+### Utilisation
+***
+
+1. Installez un serveur XAMPP
+2. Placez le contenu de l'archive dans le dossier `C:\xampp\htdocs`
+3. Exécutez le script SQL dans phpMyAdmin :
+   - Ouvrez votre navigateur et accédez à [phpMyAdmin](http://localhost/phpmyadmin).
+   - Connectez-vous avec vos identifiants (par défaut, le nom d'utilisateur est `root` et le mot de passe est vide).
+   - Executez le script `geststages.sql`.
+4. Une fois le serveur XAMPP démarré, ouvrez votre navigateur et allez sur l'URL suivante :  
+   [https://localhost/ISI1-WEB-Projet-Final/public/index.php](https://localhost/ISI1-WEB-Projet-Final/public/index.php)  
+   Votre serveur est maintenant opérationnel et vous pouvez accéder à l'application web.
+
+### Problèmes rencontrés
+***
+* Twig n'arrive pas à importer des feuilles de style css en utilisant un chemin relatif. Il a donc fallu utiliser un chemin absolu.
+* Pour la barre de navigation, On a du passer le nom de la page active en parametre de la fonction twig->render() afin d'appliquer la class: "actif" sur le bon élément.
+
+### Organisation du binôme
+***
+Le projet a été séparé en 2 parties bien qu'on ait quand meme suivi la partie de l'autre.
+* **Romain** -> Controller, View, js et css
+* **Ahdi** -> Model et plusieurs View
+
 ### A faire
 ***
 `Entreprise`
 * Rechercher entreprise ✅
-* Ajouter entreprise ✅~ (ajouter les spécialités dans la table spec_entreprise)
+* Ajouter entreprise ✅
 * Afficher/enlever information ✅
 * Voir entreprise ✅
 * Supprimer entreprise ✅
-* Modifier entreprise ✅ (ajouter les spécialités dans la table spec_entreprise)
+* Modifier entreprise ✅
 * Inscrire un étudiant à l'entreprise sélectionnée ✅
 
 `Stagiaire`
@@ -23,20 +47,13 @@
 
 `Autres`
 * Système de connexion ✅
-* Faire la page d'aide
-
-### Problèmes rencontrés
-***
-* twig ne render pas les background-image de css donc j'ai du utiliser un chemin absolu lors que l'importation de la feuille de style pour que ça marche
-* Pour la barre de navigation, j'ai du passer en parametre de twig->render() la page active et appliquer la class:"actif" sur le bon élément en utilisant ceci :  
-```{{ page == 'accueil' ? 'actif' : '' }}```
-* Demander s'il faut aller chercher dynamiquement les noms des spécialités ou bien écrire un nombre défini de spécialités dans la liste déroulantes de formulaireEntreprise.twig
+* Faire la page d'aide ✅
 
 ### Organisation de l'archive
 ***
 * [`config`](https://github.com/R0-M1/ISI1-WEB-Projet-Final/tree/main/config) : Contient les fichiers de configuration du site
   * [`database.php`](https://github.com/R0-M1/ISI1-WEB-Projet-Final/blob/main/config/database.php) : Connexion à la BDD
-  * [`getstages.sql`](https://github.com/R0-M1/ISI1-WEB-Projet-Final/blob/main/config/geststages.sql) : Script de création de la BDD
+  * [`geststages.sql`](https://github.com/R0-M1/ISI1-WEB-Projet-Final/blob/main/config/geststages.sql) : Script de création de la BDD
   * [`routes.php`](https://github.com/R0-M1/ISI1-WEB-Projet-Final/blob/main/config/routes.php) : Routage vers les différentes pages
 * [`public`](https://github.com/R0-M1/ISI1-WEB-Projet-Final/tree/main/public) : Contient les fichiers publiques du site
   * [`css`](https://github.com/R0-M1/ISI1-WEB-Projet-Final/tree/main/public/css) : Feuilles CSS

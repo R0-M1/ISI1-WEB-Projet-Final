@@ -114,7 +114,7 @@
                 <tr>
                     <td>Spécialité :</td>
                     <td>
-                        <select multiple name="specialite">
+                        <select name="specialite[]" multiple>
                             <option value="SLAM" {% if 'SLAM' in entreprise.specialite %}selected{% endif %}>SLAM</option>
                             <option value="SISR" {% if 'SISR' in entreprise.specialite %}selected{% endif %}>SISR</option>
                             <option value="AM" {% if 'AM' in entreprise.specialite %}selected{% endif %}>AM</option>
