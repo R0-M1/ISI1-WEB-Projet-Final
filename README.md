@@ -4,7 +4,8 @@
 ***
 
 1. Installez un serveur XAMPP
-2. Placez le contenu de l'archive dans le dossier `C:\xampp\htdocs`
+2. Placez le contenu de l'archive dans le dossier `C:\xampp\htdocs\`. Attention le nom du dossier doit être exactement : **ISI1-WEB-Projet-Final**  
+   Le dossier final doit donc être structuré comme ceci : `C:\xampp\htdocs\ISI1-WEB-Projet-Final\` et contenir les sous-dossiers config, public, src et vendor.
 3. Exécutez le script SQL dans phpMyAdmin :
    - Ouvrez votre navigateur et accédez à [phpMyAdmin](http://localhost/phpmyadmin).
    - Connectez-vous avec vos identifiants (par défaut, le nom d'utilisateur est `root` et le mot de passe est vide).
